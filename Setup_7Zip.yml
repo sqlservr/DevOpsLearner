@@ -1,0 +1,14 @@
+---
+- name: Install 7Zip from an MSI 
+  hosts: win 
+ 
+  tasks:
+    - name: Download the 7zip
+      win_get_url:
+        url: 'https://www.7-zip.org/a/7z2107-x64.msi'
+        dest: 'C:\ansible\7z2107-x64.msi'
+
+    - name: Install MSI
+      win_package: 
+        path: 'C:\ansible\7z2107-x64.msi'
+        state: present
